@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-green
+  labels:
+    app: frontend
+    release: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+      release: v2
+  template:
+    metadata:
+      labels:
+        app: frontend
+        release: v2
+    spec:
+      containers:
+      - name: frontend
+        image: abhay1813/finalfrontend
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 300Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
